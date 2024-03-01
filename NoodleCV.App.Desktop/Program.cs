@@ -1,23 +1,34 @@
 ﻿using System;
-
 using Avalonia;
+using Sentry;
 
 namespace NoodleCV.App.Desktop;
 
 class Program
 {
-    // Initialization code. Don't use any Avalonia, third-party APIs or any
-    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-    // yet and stuff might break.
     [STAThread]
-    public static void Main(string[] args) => BuildAvaloniaApp()
-        .StartWithClassicDesktopLifetime(args);
+    public static void Main(string[] args)
+    {
+        SentrySdk.Init(options =>
+        {
+            if (Environment.GetEnvironmentVariable("SENTRY_DSN") == null)
+            {
+                options.Dsn = "";
+            }
 
-    // Avalonia configuration, don't remove; also used by visual designer.
+            options.Debug = true;
+            options.AutoSessionTracking = true;
+            options.IsGlobalModeEnabled = true;
+            options.EnableTracing = true;
+        });
+        
+        BuildAvaloniaApp()
+            .StartWithClassicDesktopLifetime(args);
+    }
+
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace();
-
 }
