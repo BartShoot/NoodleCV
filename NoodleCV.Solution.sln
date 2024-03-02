@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoodleCV.App", "NoodleCV.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoodleCV.App.Desktop", "NoodleCV.App.Desktop\NoodleCV.App.Desktop.csproj", "{74298F79-BDA5-453E-929D-127025D58173}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoodleCV.Engine", "NoodleCV.Engine\NoodleCV.Engine.csproj", "{0EE23EDE-06B1-4BBC-805E-7304ED417B97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{74298F79-BDA5-453E-929D-127025D58173}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74298F79-BDA5-453E-929D-127025D58173}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74298F79-BDA5-453E-929D-127025D58173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE23EDE-06B1-4BBC-805E-7304ED417B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE23EDE-06B1-4BBC-805E-7304ED417B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE23EDE-06B1-4BBC-805E-7304ED417B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE23EDE-06B1-4BBC-805E-7304ED417B97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
