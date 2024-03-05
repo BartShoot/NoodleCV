@@ -1,0 +1,17 @@
+- pipeline: "dotnet publish "
+  events:
+  - type: "PUSH"
+    refs:
+    - "refs/heads/main"
+  fail_on_prepare_env_warning: true
+  resources: "MEDIUM"
+  actions:
+  - action: "dotnet publish --project NoodleCV.App.Desktop"
+    type: "BUILD"
+    docker_image_name: "dotnet/sdk"
+    docker_image_tag: "8.0"
+    registry: "mcr.microsoft.com"
+    execute_commands:
+    - "dotnet publish NoodleCV.App.Desktop --runtime win-x64 -p:PublishSingleFile=True -p:PublishTrimmed=True -p:TrimMode=CopyUsed -c Release --self-contained true -o \"build-files-windows\""
+    - "dotnet publish NoodleCV.App.Desktop --runtime linux-x64 -p:PublishSingleFile=True -p:PublishTrimmed=True -p:TrimMode=CopyUsed -c Release --self-contained true -o \"build-files-linux\""
+    shell: "BASH"
