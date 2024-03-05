@@ -1,8 +1,8 @@
 - pipeline: "dotnet publish "
-  events:
-  - type: "PUSH"
-    refs:
-    - "refs/heads/main"
+  on: "CLICK"
+  refs:
+  - ":default"
+  terminate_stale_runs: true
   fail_on_prepare_env_warning: true
   resources: "MEDIUM"
   actions:
@@ -15,3 +15,16 @@
     - "dotnet publish NoodleCV.App.Desktop --runtime win-x64 -p:PublishSingleFile=True -p:PublishTrimmed=True -p:TrimMode=CopyUsed -c Release --self-contained true -o \"build-files-windows\""
     - "dotnet publish NoodleCV.App.Desktop --runtime linux-x64 -p:PublishSingleFile=True -p:PublishTrimmed=True -p:TrimMode=CopyUsed -c Release --self-contained true -o \"build-files-linux\""
     shell: "BASH"
+  - action: "GitHub Release"
+    type: "GIT_HUB_RELEASE"
+    tag_name: "$BUDDY_EXECUTION_ID"
+    target_commitish: "$BUDDY_EXECUTION_REVISION"
+    release_name: "Release"
+    external_project_id: "BartShoot/NoodleCV"
+    organization: "48035448"
+    assets:
+    - source_path: "/build-files-windows"
+      label: "windows"
+    - source_path: "/build-files-linux"
+      label: "linux"
+    integration_hash: "NDm8VvJ4open7wRpa7Az1XPYRr"
