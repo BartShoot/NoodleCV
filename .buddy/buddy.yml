@@ -17,7 +17,7 @@
     shell: "BASH"
   - action: "GitHub Release"
     type: "GIT_HUB_RELEASE"
-    tag_name: "Manual release $VERSION-$VERSION_TAG.$BUDDY_EXECUTION_HASH"
+    tag_name: "v$VERSION-$VERSION_TAG.$BUDDY_EXECUTION_HASH"
     target_commitish: "$BUDDY_EXECUTION_REVISION"
     release_name: "Release $VERSION-$VERSION_TAG.$BUDDY_EXECUTION_HASH"
     body: "$BUDDY_EXECUTION_COMMENT"
