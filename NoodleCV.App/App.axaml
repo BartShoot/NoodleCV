@@ -6,5 +6,6 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://NodifyM.Avalonia/Styles/ControlStyles.axaml"></StyleInclude>
     </Application.Styles>
 </Application>
