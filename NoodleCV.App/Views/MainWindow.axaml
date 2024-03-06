@@ -2,7 +2,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:NoodleCV.App.Views"
         xmlns:controls="clr-namespace:NodifyM.Avalonia.Controls;assembly=NodifyM.Avalonia"
         xmlns:viewModelBase="clr-namespace:NodifyM.Avalonia.ViewModelBase;assembly=NodifyM.Avalonia"
         xmlns:converters="clr-namespace:NodifyM.Avalonia.Converters;assembly=NodifyM.Avalonia"
@@ -12,8 +11,12 @@
         x:DataType="viewModels:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="NoodleCV.App">
-    <StackPanel>
-        <views:MainView />
+    <Grid>
+        <StackPanel ZIndex="1">
+            <Button Content="Switch Theme" Command="{Binding ChangeThemeCommand}" />
+            <Button ZIndex="1" Content="new" Click="Button_OnClick" />
+        </StackPanel>
+
         <controls:NodifyEditor x:Name="Editor"
                                Background="Transparent"
                                ItemsSource="{Binding Nodes }"
@@ -116,7 +119,7 @@
                                    Output="{Binding Output}">
                         <controls:Node.Styles>
                             <Style Selector="controls|Node[IsSelected=False]:pointerover">
-                                <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
+                                <Setter Property="BorderBrush" Value="AliceBlue" />
                             </Style>
                         </controls:Node.Styles>
                         <controls:Node.InputConnectorTemplate>
@@ -171,6 +174,6 @@
 
             </controls:NodifyEditor.ItemTemplate>
         </controls:NodifyEditor>
-    </StackPanel>
+    </Grid>
 
 </Window>
