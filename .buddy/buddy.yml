@@ -28,3 +28,27 @@
     - source_path: "/build-files-linux"
       label: "linux"
     integration_hash: "NDm8VvJ4open7wRpa7Az1XPYRr"
+- pipeline: "dotnet build & test"
+  events:
+    - type: "PUSH"
+      refs:
+        - "refs/heads/main"
+  terminate_stale_runs: true
+  fail_on_prepare_env_warning: true
+  actions:
+    - action: "dotnet build"
+      type: "BUILD"
+      docker_image_name: "dotnet/sdk"
+      docker_image_tag: "8.0"
+      registry: "mcr.microsoft.com"
+      execute_commands:
+        - "dotnet build"
+      shell: "BASH"
+    - action: "dotnet test"
+      type: "BUILD"
+      docker_image_name: "dotnet/sdk"
+      docker_image_tag: "8.0"
+      registry: "mcr.microsoft.com"
+      execute_commands:
+        - "dotnet test"
+      shell: "BASH"
