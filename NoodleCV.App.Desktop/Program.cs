@@ -16,12 +16,11 @@ class Program
                 options.Dsn = "";
             }
 
-            options.Debug = true;
             options.AutoSessionTracking = true;
             options.IsGlobalModeEnabled = true;
             options.EnableTracing = true;
         });
-        
+
         BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
     }
