@@ -1,4 +1,3 @@
-using System;
 using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Styling;
@@ -7,9 +6,9 @@ using NodifyM.Avalonia.ViewModelBase;
 
 namespace NoodleCV.App.ViewModels;
 
-public partial class MainWindowViewModel : NodifyEditorViewModelBase
+public partial class EditorViewModel : NodifyEditorViewModelBase
 {
-    public MainWindowViewModel()
+    public EditorViewModel()
     {
         var knot1 = new KnotNodeViewModel()
         {

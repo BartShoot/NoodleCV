@@ -22,16 +22,16 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel()
+                DataContext = new EditorViewModel()
             };
         }
-        // else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-        // {
-        //     singleViewPlatform.MainView = new MainView
-        //     {
-        //         DataContext = new MainViewModel()
-        //     };
-        // } //TODO: refactor Editor to get EditorView here 
+        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
+        {
+            singleViewPlatform.MainView = new EditorView()
+            {
+                DataContext = new EditorViewModel()
+            };
+        }
 
         base.OnFrameworkInitializationCompleted();
     }
