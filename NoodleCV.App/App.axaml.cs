@@ -7,7 +7,7 @@ using NoodleCV.App.Views;
 
 namespace NoodleCV.App;
 
-public partial class App : Application
+public class App : Application
 {
     public override void Initialize()
     {
@@ -27,7 +27,7 @@ public partial class App : Application
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
-            singleViewPlatform.MainView = new EditorView()
+            singleViewPlatform.MainView = new EditorView
             {
                 DataContext = new EditorViewModel()
             };

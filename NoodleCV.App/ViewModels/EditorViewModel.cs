@@ -10,53 +10,53 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
 {
     public EditorViewModel()
     {
-        var knot1 = new KnotNodeViewModel()
+        var knot1 = new KnotNodeViewModel
         {
             Location = new Point(300, 100)
         };
-        var input1 = new ConnectorViewModelBase()
+        var input1 = new ConnectorViewModelBase
         {
             Title = "AS 1",
             Flow = ConnectorViewModelBase.ConnectorFlow.Input
         };
-        var output1 = new ConnectorViewModelBase()
+        var output1 = new ConnectorViewModelBase
         {
             Title = "B 1",
             Flow = ConnectorViewModelBase.ConnectorFlow.Output
         };
         Connections.Add(new ConnectionViewModelBase(this, output1, knot1.Connector, "Test"));
         Connections.Add(new ConnectionViewModelBase(this, knot1.Connector, input1));
-        Nodes = new()
+        Nodes = new ObservableCollection<object?>
         {
-            new NodeViewModelBase()
+            new NodeViewModelBase
             {
                 Location = new Point(400, 2000),
                 Title = "Node 1",
                 Input = new ObservableCollection<ConnectorViewModelBase>
                 {
-                    input1,
+                    input1
                 },
                 Output = new ObservableCollection<ConnectorViewModelBase>
                 {
-                    new ConnectorViewModelBase()
+                    new()
                     {
                         Title = "Output 2",
                         Flow = ConnectorViewModelBase.ConnectorFlow.Output
                     }
                 }
             },
-            new NodeViewModelBase()
+            new NodeViewModelBase
             {
                 Title = "Node 2",
                 Location = new Point(-100, -100),
                 Input = new ObservableCollection<ConnectorViewModelBase>
                 {
-                    new ConnectorViewModelBase()
+                    new()
                     {
                         Title = "Input 1",
                         Flow = ConnectorViewModelBase.ConnectorFlow.Input
                     },
-                    new ConnectorViewModelBase()
+                    new()
                     {
                         Flow = ConnectorViewModelBase.ConnectorFlow.Input,
                         Title = "Input 2"
@@ -65,12 +65,12 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
                 Output = new ObservableCollection<ConnectorViewModelBase>
                 {
                     output1,
-                    new ConnectorViewModelBase()
+                    new()
                     {
                         Flow = ConnectorViewModelBase.ConnectorFlow.Output,
                         Title = "Output 1"
                     },
-                    new ConnectorViewModelBase()
+                    new()
                     {
                         Flow = ConnectorViewModelBase.ConnectorFlow.Output,
                         Title = "Output 2"
