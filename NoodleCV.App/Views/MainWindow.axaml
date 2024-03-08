@@ -4,13 +4,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:NoodleCV.App.Views"
         xmlns:viewModels="clr-namespace:NoodleCV.App.ViewModels"
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
+        xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NoodleCV.App.Views.MainWindow"
         x:DataType="viewModels:EditorViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="NoodleCV.App">
     <Grid>
-        <views:EditorView x:Name="DefaultEditorView"/>
-
+            <ui:InfoBar Severity="Error" Message="sww" Title="Test" ZIndex="1" IsOpen="True" Margin="10"></ui:InfoBar>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        
+        <views:EditorView x:Name="DefaultEditorView" />
+        
+        <Image Grid.Row="1" Source="../Assets/avalonia-logo.ico"></Image>
+        
+        <StackPanel Grid.Column="1" Spacing="5" Margin="10">
+            <Label Content="Label1"></Label>
+            <ComboBox HorizontalAlignment="Stretch">
+               <ComboBoxItem Content="test"></ComboBoxItem>
+               <ComboBoxItem Content="test2"></ComboBoxItem>
+           </ComboBox> 
+            <Label Content="Label1"></Label>
+            <TextBox></TextBox>
+        </StackPanel>
+        
     </Grid>
 </Window>
