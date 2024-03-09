@@ -14,9 +14,18 @@ Types of data other than images are planned for future developement.
 
 # 🚀 Running the app
 
-For now there isn't much to run. 
-Soon I will provide methods for publishing dotnet project and also setup automatic releases.
+To try the application you can head over to download newest [release](https://github.com/BartShoot/NoodleCV/releases) for your device.
+For now the application is mostly made up of mock interface and functionality will come at later date.
 
+If you wish to build the app yourself clone the repo and in repo root directory run `dotnet run --project NoodleCV.App.Desktop`
+
+For the lazy: 
+```shell
+git clone https://github.com/BartShoot/NoodleCV.git
+cd NoodleCV
+dotnet run --project NoodleCV.App.Desktop
+```
+If you wish to package it like in releases check out my [Buddy pipelines](https://github.com/BartShoot/NoodleCV/blob/main/.buddy/buddy.yml) where I use `dotnet publish` with trimming and single file portable output.
 # 🧰 Stack
 
 Application is developed in C# with AvaloniaUI targeting desktop platforms (Windows, Linux and MacOS).
