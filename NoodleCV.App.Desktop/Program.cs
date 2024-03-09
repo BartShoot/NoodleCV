@@ -20,6 +20,7 @@ class Program
             options.IsGlobalModeEnabled = true;
             options.EnableTracing = true;
         });
+        SentrySdk.CaptureMessage("Someone tried to launch application");
 
         BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
