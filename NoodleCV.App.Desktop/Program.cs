@@ -11,11 +11,7 @@ class Program
     {
         SentrySdk.Init(options =>
         {
-            if (Environment.GetEnvironmentVariable("SENTRY_DSN") == null)
-            {
-                options.Dsn = "";
-            }
-
+            options.Dsn = "https://8b9b20062c053202ff1c972f8cd19108@o146603.ingest.us.sentry.io/4506836668973056";
             options.AutoSessionTracking = true;
             options.IsGlobalModeEnabled = true;
             options.EnableTracing = true;
