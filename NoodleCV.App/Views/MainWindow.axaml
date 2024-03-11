@@ -23,8 +23,15 @@
         </Grid.RowDefinitions>
         
         <views:EditorView x:Name="DefaultEditorView" />
-        
-        <Image Grid.Row="1" Source="../Assets/avalonia-logo.ico"></Image>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <views:ImagePreviewView />
+            <views:ImagePreviewView Grid.Column="1" />
+        </Grid>
 
         <views:ParameterView Grid.Row="0" Grid.Column="1" />
 
