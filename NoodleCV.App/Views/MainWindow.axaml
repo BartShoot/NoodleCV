@@ -25,16 +25,8 @@
         <views:EditorView x:Name="DefaultEditorView" />
         
         <Image Grid.Row="1" Source="../Assets/avalonia-logo.ico"></Image>
-        
-        <StackPanel Grid.Column="1" Spacing="5" Margin="10">
-            <Label Content="Label1"></Label>
-            <ComboBox HorizontalAlignment="Stretch">
-               <ComboBoxItem Content="test"></ComboBoxItem>
-               <ComboBoxItem Content="test2"></ComboBoxItem>
-           </ComboBox> 
-            <Label Content="Label1"></Label>
-            <TextBox></TextBox>
-        </StackPanel>
-        
+
+        <views:ParameterView Grid.Row="0" Grid.Column="1" />
+
     </Grid>
 </Window>
