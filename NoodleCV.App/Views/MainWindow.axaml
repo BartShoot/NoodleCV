@@ -5,14 +5,13 @@
         xmlns:views="clr-namespace:NoodleCV.App.Views"
         xmlns:viewModels="clr-namespace:NoodleCV.App.ViewModels"
         xmlns:ui="using:FluentAvalonia.UI.Controls"
-        xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NoodleCV.App.Views.MainWindow"
         x:DataType="viewModels:EditorViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="NoodleCV.App">
+
     <Grid>
-            <ui:InfoBar Severity="Error" Message="sww" Title="Test" ZIndex="1" IsOpen="True" Margin="10"></ui:InfoBar>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="200" />
@@ -21,8 +20,11 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        
-        <views:EditorView x:Name="DefaultEditorView" />
+
+        <ui:InfoBar Severity="Error" Message="sww" Title="Test" ZIndex="1" IsOpen="True" Margin="10" />
+
+        <views:EditorView Grid.Row="0" Grid.Column="0" x:Name="DefaultEditorView" />
+
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
