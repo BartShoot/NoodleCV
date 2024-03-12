@@ -5,22 +5,28 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="NoodleCV.App.Views.ParameterView">
 
-    <StackPanel Spacing="5" Margin="10">
+    <StackPanel Spacing="10" Margin="10">
         <Label Content="Selected Node Name" FontWeight="SemiBold" FontSize="24" />
-        <Label Content="Label1" />
-        <ComboBox HorizontalAlignment="Stretch">
-            <ComboBoxItem Content="test" />
-            <ComboBoxItem Content="test2" />
-        </ComboBox>
-        <Label Content="Label2" />
-        <Grid>
-            <Grid.ColumnDefinitions>*,100</Grid.ColumnDefinitions>
-            <Slider x:Name="slider" HorizontalAlignment="Stretch" TickFrequency="10" TickPlacement="Outside"
-                    IsSnapToTickEnabled="True" />
-            <TextBox Grid.Column="1" Text="{Binding #slider.Value}" Width="20" />
-        </Grid>
+        <StackPanel Orientation="Vertical">
+            <Label Content="Label1" />
+            <ComboBox HorizontalAlignment="Stretch">
+                <ComboBoxItem Content="test" />
+                <ComboBoxItem Content="test2" />
+            </ComboBox>
+        </StackPanel>
 
-        <Label Content="Label3" />
-        <TextBox />
+        <StackPanel Orientation="Vertical">
+            <Label Content="Label2" />
+            <Grid ColumnDefinitions="*,100">
+                <Slider x:Name="slider" HorizontalAlignment="Stretch" TickFrequency="10" TickPlacement="Outside"
+                        IsSnapToTickEnabled="True" />
+                <TextBox Grid.Column="1" Text="{Binding #slider.Value}" Width="20" VerticalAlignment="Center" />
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical">
+            <Label Content="Label3" />
+            <TextBox />
+        </StackPanel>
     </StackPanel>
 </UserControl>
