@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia;
+using Avalonia.Xaml.Interactivity;
 using Sentry;
 
 namespace NoodleCV.App.Desktop;
@@ -11,7 +12,11 @@ class Program
     {
         SentrySdk.Init(options =>
         {
+#if DEBUG
+            options.Dsn = "";
+#else
             options.Dsn = "https://8b9b20062c053202ff1c972f8cd19108@o146603.ingest.us.sentry.io/4506836668973056";
+#endif
             options.AutoSessionTracking = true;
             options.IsGlobalModeEnabled = true;
             options.EnableTracing = true;
