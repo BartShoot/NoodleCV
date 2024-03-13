@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="NoodleCV.App.Views.ParameterView">
 
@@ -14,19 +15,40 @@
                 <ComboBoxItem Content="test2" />
             </ComboBox>
         </StackPanel>
-
+        <Separator/>
         <StackPanel Orientation="Vertical">
-            <Label Content="Label2" />
-            <Grid ColumnDefinitions="*,100">
-                <Slider x:Name="slider" HorizontalAlignment="Stretch" TickFrequency="10" TickPlacement="Outside"
-                        IsSnapToTickEnabled="True" />
-                <TextBox Grid.Column="1" Text="{Binding #slider.Value}" Width="20" VerticalAlignment="Center" />
+            <Grid ColumnDefinitions="*,*">
+                <Label Content="Label2" />
+                <Button Grid.Column="1" Classes="customMouseOver" HorizontalAlignment="Right" Background="Transparent"
+                        BorderBrush="Transparent">
+                    <icons:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="Tune" />
+                </Button>
+            </Grid>
+            <Grid ColumnDefinitions="*,5,120">
+                <Slider x:Name="slider">
+                    <Interaction.Behaviors>
+                        <DataTriggerBehavior Binding="{Binding #UpDown.Value}"
+                                             ComparisonCondition="GreaterThan"
+                                             Value="{Binding #slider.Maximum}">
+                            <ChangePropertyAction TargetObject="slider"
+                                                  PropertyName="Maximum"
+                                                  Value="{Binding #UpDown.Value}" />
+                            <ChangePropertyAction TargetObject="test"
+                                                  PropertyName="Text"
+                                                  Value="{Binding #UpDown.Value}" />
+                        </DataTriggerBehavior>
+                    </Interaction.Behaviors>
+                </Slider>
+                <NumericUpDown x:Name="UpDown" Grid.Column="2" ParsingNumberStyle="Integer"
+                               Value="{Binding #slider.Value}" Width="120" VerticalAlignment="Center" />
+                <!-- TODO: remove parsing style and create converter -->
             </Grid>
         </StackPanel>
+        <Separator/>
 
         <StackPanel Orientation="Vertical">
             <Label Content="Label3" />
-            <TextBox />
+            <TextBox x:Name="test" />
         </StackPanel>
     </StackPanel>
 </UserControl>
