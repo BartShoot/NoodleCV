@@ -23,6 +23,9 @@ class Program
         });
         SentrySdk.CaptureMessage("Someone tried to launch application");
 
+        GC.KeepAlive(typeof(Interaction).Assembly);
+        GC.KeepAlive(typeof(ComparisonConditionType).Assembly);
+
         BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
     }
