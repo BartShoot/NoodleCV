@@ -84,6 +84,8 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         input1.IsConnected = true;
     }
 
+    public ParameterViewModel ParameterViewModel { get; } = new();
+
     public override void Connect(ConnectorViewModelBase source, ConnectorViewModelBase target)
     {
         base.Connect(source, target);

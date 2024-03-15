@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:vm="using:NoodleCV.App.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="NoodleCV.App.Views.CustomSlider" x:DataType="vm:EditorViewModel">
+    <Design.DataContext>
+        <vm:CustomSliderViewModel />
+    </Design.DataContext>
+
+    <StackPanel Orientation="Vertical">
+        <Grid ColumnDefinitions="*,*">
+            <Label Content="Label2" />
+            <Button Grid.Column="1" HorizontalAlignment="Right" Background="Transparent"
+                    BorderBrush="Transparent">
+                <avalonia:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="Tune" />
+            </Button>
+        </Grid>
+        <Grid ColumnDefinitions="*,5,120">
+            <Slider x:Name="Slider" Value="{Binding ParameterViewModel.CustomSliderViewModel.SliderValue, Mode=TwoWay}">
+                <!--<Interaction.Behaviors>
+                    <DataTriggerBehavior Binding="{Binding ParameterViewModel.CustomSliderViewModel.UpDownValue}"
+                                         ComparisonCondition="GreaterThan"
+                                         Value="{Binding #Slider.Maximum}">
+                        <ChangePropertyAction TargetObject="Slider"
+                                              PropertyName="Maximum"
+                                              Value="{Binding ParameterViewModel.CustomSliderViewModel.UpDownValue}" />
+                    </DataTriggerBehavior>
+                </Interaction.Behaviors>-->
+            </Slider>
+            <NumericUpDown x:Name="UpDown" Grid.Column="2"
+                           Value="{Binding ParameterViewModel.CustomSliderViewModel.SliderValue, Mode=TwoWay}" Width="120" VerticalAlignment="Center" />
+            <!-- TODO: remove parsing style and create converter -->
+        </Grid>
+    </StackPanel>
+</UserControl>
