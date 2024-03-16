@@ -1,8 +1,13 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace NoodleCV.App.ViewModels;
 
-public class CustomSliderViewModel
+public partial class CustomSliderViewModel : ObservableObject
 {
-    public decimal SliderValue { get; set; }
-    public decimal SliderNewMax { get; set; }
-    public decimal UpDownValue { get; set; }
+    [ObservableProperty]
+    private decimal _sliderValue;
+    [ObservableProperty]
+    private decimal _sliderNewMax;
+    [ObservableProperty]
+    private decimal _upDownValue;
 }
