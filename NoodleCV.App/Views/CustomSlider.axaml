@@ -20,18 +20,20 @@
         </Grid>
         <Grid ColumnDefinitions="*,5,120">
             <Slider x:Name="Slider" Value="{Binding ParameterViewModel.CustomSliderViewModel.SliderValue, Mode=TwoWay}">
-                <Interaction.Behaviors>
-                    <DataTriggerBehavior Binding="{Binding ParameterViewModel.CustomSliderViewModel.UpDownValue}"
-                                         ComparisonCondition="GreaterThan"
-                                         Value="{Binding #Slider.Maximum}">
-                        <ChangePropertyAction TargetObject="Slider"
-                                              PropertyName="Maximum"
-                                              Value="{Binding ParameterViewModel.CustomSliderViewModel.UpDownValue}" />
-                    </DataTriggerBehavior>
-                </Interaction.Behaviors>
+                
             </Slider>
             <NumericUpDown x:Name="UpDown" Grid.Column="2"
-                           Value="{Binding ParameterViewModel.CustomSliderViewModel.SliderValue, Mode=TwoWay}" Width="120" VerticalAlignment="Center" />
+                           Value="{Binding ParameterViewModel.CustomSliderViewModel.SliderValue, Mode=TwoWay}" Width="120" VerticalAlignment="Center">
+                <Interaction.Behaviors>
+                                    <DataTriggerBehavior Binding="{Binding ParameterViewModel.CustomSliderViewModel.SliderValue}"
+                                                         ComparisonCondition="GreaterThan"
+                                                         Value="{Binding #Slider.Maximum}">
+                                        <ChangePropertyAction TargetObject="Slider"
+                                                              PropertyName="Maximum"
+                                                              Value="{Binding ParameterViewModel.CustomSliderViewModel.SliderValue}" />
+                                    </DataTriggerBehavior>
+                                </Interaction.Behaviors>
+            </NumericUpDown>
             <!-- TODO: remove parsing style and create converter -->
         </Grid>
     </StackPanel>
