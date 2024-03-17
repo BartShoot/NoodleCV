@@ -11,7 +11,7 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="NoodleCV.App">
 
-    <Grid ColumnDefinitions="5*,1*" RowDefinitions="3*,1*">
+    <Grid ColumnDefinitions="5*,2*" RowDefinitions="3*,1*">
         <ui:InfoBar Severity="Error" Message="sww" Title="Test" ZIndex="1" IsOpen="True" Margin="10" />
 
         <views:EditorView Grid.Row="0" Grid.Column="0" x:Name="DefaultEditorView" />
