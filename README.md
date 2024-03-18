@@ -2,7 +2,7 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/BartShoot/NoodleCV?style=flat-square)
 ![GitHub License](https://img.shields.io/github/license/BartShoot/NoodleCV?style=flat-square)
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/BartShoot/NoodleCV?style=flat-square&logo=librariesdotio)
+[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/bartshoot/noodlecv?style=flat-square&logo=librariesdotio)](https://libraries.io/github/BartShoot/NoodleCV)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BartShoot/NoodleCV?style=flat-square)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/BartShoot/NoodleCV/total?style=flat-square)
 
