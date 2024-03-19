@@ -6,7 +6,6 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BartShoot/NoodleCV?style=flat-square)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/BartShoot/NoodleCV/total?style=flat-square)
 
-
 Multiplatform desktop application for image processing.
 Project is inspired by Blender, Unreal Engine, Substance Designer and other node-based editors.
 
@@ -26,7 +25,11 @@ for your device.
 For now the application is mostly made up of mock interface and functionality will come at later date.
 
 If you wish to build the app yourself clone the repo and in repo root directory
-run `dotnet run --project NoodleCV.App.Desktop`
+run:
+
+```
+dotnet run --project NoodleCV.App.Desktop
+```
 
 For the lazy:
 
@@ -40,7 +43,10 @@ If you wish to package it like in releases check out
 my [Buddy pipelines](https://github.com/BartShoot/NoodleCV/blob/main/.buddy/buddy.yml) where I use `dotnet publish` with
 trimming and single file portable output.
 
+Currently the release is tested on Linux and Windows, soon also MacOS on Apple silicon.
+If there is a target that you could confirm is working feel free to let me know by pull request or create an issue.
+
 # 🧰 Stack
 
 Application is developed in C# with AvaloniaUI targeting desktop platforms (Windows, Linux and MacOS).
-Operations will be implemented from OpenCV.
+The image processing library for this project is OpenCV.
