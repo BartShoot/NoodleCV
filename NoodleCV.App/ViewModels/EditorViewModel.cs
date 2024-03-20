@@ -10,10 +10,6 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
 {
     public EditorViewModel()
     {
-        var knot1 = new KnotNodeViewModel
-        {
-            Location = new Point(300, 100)
-        };
         var input1 = new ConnectorViewModelBase
         {
             Title = "AS 1",
@@ -24,13 +20,13 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
             Title = "B 1",
             Flow = ConnectorViewModelBase.ConnectorFlow.Output
         };
-        Connections.Add(new ConnectionViewModelBase(this, output1, knot1.Connector, "Test"));
-        Connections.Add(new ConnectionViewModelBase(this, knot1.Connector, input1));
+        Connections.Add(new ConnectionViewModelBase(this, output1, input1));
+        Connections.Add(new ConnectionViewModelBase(this, output1, input1));
         Nodes = new ObservableCollection<object?>
         {
             new NodeViewModelBase
             {
-                Location = new Point(400, 2000),
+                Location = new Point(400, 500),
                 Title = "Node 1",
                 Input = new ObservableCollection<ConnectorViewModelBase>
                 {
@@ -78,8 +74,6 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
                 }
             }
         };
-        Nodes.Add(knot1);
-        knot1.Connector.IsConnected = true;
         output1.IsConnected = true;
         input1.IsConnected = true;
     }
