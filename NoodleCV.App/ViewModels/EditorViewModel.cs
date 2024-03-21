@@ -12,22 +12,21 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
     {
         var input1 = new ConnectorViewModelBase
         {
-            Title = "AS 1",
+            Title = "Image",
             Flow = ConnectorViewModelBase.ConnectorFlow.Input
         };
         var output1 = new ConnectorViewModelBase
         {
-            Title = "B 1",
+            Title = "Image",
             Flow = ConnectorViewModelBase.ConnectorFlow.Output
         };
-        Connections.Add(new ConnectionViewModelBase(this, output1, input1));
         Connections.Add(new ConnectionViewModelBase(this, output1, input1));
         Nodes = new ObservableCollection<object?>
         {
             new NodeViewModelBase
             {
                 Location = new Point(400, 500),
-                Title = "Node 1",
+                Title = "Crop",
                 Input = new ObservableCollection<ConnectorViewModelBase>
                 {
                     input1
@@ -36,41 +35,27 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
                 {
                     new()
                     {
-                        Title = "Output 2",
+                        Title = "Image",
                         Flow = ConnectorViewModelBase.ConnectorFlow.Output
                     }
-                }
+                },
+                Footer = "1920x1080@8bpc"
             },
             new NodeViewModelBase
             {
-                Title = "Node 2",
+                Title = "Blur",
                 Location = new Point(-100, -100),
                 Input = new ObservableCollection<ConnectorViewModelBase>
                 {
                     new()
                     {
-                        Title = "Input 1",
+                        Title = "Image",
                         Flow = ConnectorViewModelBase.ConnectorFlow.Input
-                    },
-                    new()
-                    {
-                        Flow = ConnectorViewModelBase.ConnectorFlow.Input,
-                        Title = "Input 2"
                     }
                 },
                 Output = new ObservableCollection<ConnectorViewModelBase>
                 {
                     output1,
-                    new()
-                    {
-                        Flow = ConnectorViewModelBase.ConnectorFlow.Output,
-                        Title = "Output 1"
-                    },
-                    new()
-                    {
-                        Flow = ConnectorViewModelBase.ConnectorFlow.Output,
-                        Title = "Output 2"
-                    }
                 }
             }
         };

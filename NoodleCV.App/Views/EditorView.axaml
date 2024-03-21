@@ -56,7 +56,7 @@
                                             Zoom="{Binding $parent[controls:NodifyEditor].Zoom}"
                                             Height="{Binding $parent[controls:NodifyEditor].Bounds.Height}"
                                             Spacing="30"
-                                            Thickness="0.5"
+                                            Thickness="0.2"
                                             Brush="{StaticResource GridLinesColorBrush}"
                                             ZIndex="-2" />
                 </DataTemplate>
@@ -74,8 +74,8 @@
                             Source="{Binding Source.Anchor}" Focusable="True"
                             Target="{Binding Target.Anchor}">
                             <controls:Connection.Stroke>
-                                <SolidColorBrush Color="Red"
-                                                 Opacity="0.5" />
+                                <SolidColorBrush Color="SlateGray"
+                                                 Opacity="0.8" />
                             </controls:Connection.Stroke>
                         </controls:Connection>
                     </Grid>
@@ -92,9 +92,8 @@
                         Direction="{Binding Source.Flow,Converter={StaticResource FlowToDirectionConverter}}"
                         PreviewTarget="{Binding PreviewTarget, Mode=OneWayToSource}">
                         <controls:PendingConnection.Stroke>
-                            <SolidColorBrush Color="Red"
-                                             Opacity="0.5" />
-
+                            <SolidColorBrush Color="SlateGray"
+                                             Opacity="0.8" />
                         </controls:PendingConnection.Stroke>
                         <controls:PendingConnection.Background>
                             <SolidColorBrush Color="DodgerBlue"
@@ -114,12 +113,20 @@
                                    Header="{Binding Title}"
                                    Location="{Binding Location,Mode=TwoWay}"
                                    VerticalAlignment="Center"
-                                   Output="{Binding Output}">
+                                   Output="{Binding Output}"
+                                   Footer="{Binding Footer}">
                         <controls:Node.Styles>
                             <Style Selector="controls|Node[IsSelected=False]:pointerover">
                                 <Setter Property="BorderBrush" Value="AliceBlue" />
                             </Style>
+                            <Style Selector="controls|Node.Footer">
+                                <Setter Property="FontWeight" Value="Thin"/>
+                                <Setter Property="FontSize" Value="6"/>
+                            </Style>
                         </controls:Node.Styles>
+                        <controls:Node.FooterBrush>
+                            <SolidColorBrush Color="Gray" />
+                        </controls:Node.FooterBrush>
                         <controls:Node.InputConnectorTemplate>
                             <DataTemplate DataType="{x:Type viewModelBase:ConnectorViewModelBase}">
                                 <controls:NodeInput
