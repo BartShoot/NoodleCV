@@ -17,10 +17,11 @@
 
         <controls:NodifyEditor x:Name="Editor"
                                Background="Transparent"
-                               ItemsSource="{Binding Nodes }"
+                               ItemsSource="{Binding Nodes}"
                                Connections="{Binding Connections}"
                                PendingConnection="{Binding PendingConnection}"
-                               DisconnectConnectorCommand="{Binding DisconnectConnectorCommand}">
+                               DisconnectConnectorCommand="{Binding DisconnectConnectorCommand}"
+                               SelectedItem="{Binding SelectedNode}">
             <controls:NodifyEditor.DataTemplates>
                 <DataTemplate DataType="viewModelBase:KnotNodeViewModel">
                     <controls:KnotNode
