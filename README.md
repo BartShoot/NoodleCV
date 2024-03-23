@@ -48,5 +48,5 @@ If there is a target that you could confirm is working feel free to let me know 
 
 # 🧰 Stack
 
-Application is developed in C# with AvaloniaUI targeting desktop platforms (Windows, Linux and MacOS).
+Application is developed in C# with AvaloniaUI targeting desktop platforms (Windows, Linux and MacOS). The UI is using FluentAvalonia to match modern operating systems.
 The image processing library for this project is OpenCV.
