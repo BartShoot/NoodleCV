@@ -13,6 +13,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
 
     public EditorViewModel()
     {
+        SelectedNode = new NodeViewModelBase();
         var input1 = new ConnectorViewModelBase
         {
             Title = "Image",
@@ -70,7 +71,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
 
     partial void OnSelectedNodeChanged(NodeViewModelBase value)
     {
-        throw new();
+        //throw new();
     }
 
     public override void Connect(ConnectorViewModelBase source, ConnectorViewModelBase target)
