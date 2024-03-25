@@ -4,15 +4,20 @@ namespace NoodleCV.App.ViewModels;
 
 public partial class CustomSliderViewModel : ObservableObject
 {
-    [ObservableProperty]
-    private decimal _sliderValue;
-    [ObservableProperty]
-    private int _sliderNewMax;
-    [ObservableProperty]
-    private decimal _upDownValue;
+    [ObservableProperty] private int _sliderNewMax;
+    [ObservableProperty] private decimal _sliderValue;
+    [ObservableProperty] private decimal _upDownValue;
+
+    public CustomSliderViewModel()
+    {
+        SliderNewMax = 100;
+    }
 
     partial void OnSliderValueChanging(decimal value)
     {
-        SliderNewMax = (int)value;
+        if (value > SliderNewMax)
+        {
+            SliderNewMax = (int)value;
+        }
     }
 }
