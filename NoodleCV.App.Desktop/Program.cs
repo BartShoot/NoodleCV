@@ -1,6 +1,5 @@
 ﻿using System;
 using Avalonia;
-using Avalonia.Xaml.Interactivity;
 using Sentry;
 
 namespace NoodleCV.App.Desktop;
@@ -22,9 +21,6 @@ class Program
             options.EnableTracing = true;
         });
         SentrySdk.CaptureMessage("Someone tried to launch application");
-
-        GC.KeepAlive(typeof(Interaction).Assembly);
-        GC.KeepAlive(typeof(ComparisonConditionType).Assembly);
 
         BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);

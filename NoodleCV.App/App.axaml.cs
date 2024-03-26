@@ -25,13 +25,6 @@ public class App : Application
                 DataContext = new EditorViewModel()
             };
         }
-        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-        {
-            singleViewPlatform.MainView = new EditorView
-            {
-                DataContext = new EditorViewModel()
-            };
-        }
 
         base.OnFrameworkInitializationCompleted();
     }
