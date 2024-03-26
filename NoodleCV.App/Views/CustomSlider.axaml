@@ -14,8 +14,8 @@
         <Grid ColumnDefinitions="*,*">
             <Label Content="Label2" />
             <Button Grid.Column="1" HorizontalAlignment="Right" Background="Transparent"
-                    BorderBrush="Transparent">
-                <avalonia:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="Tune" />
+                    BorderBrush="Transparent" Command="{Binding ParameterViewModel.CustomSliderViewModel.ResetToDefaultCommand}">
+                <avalonia:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="Restart"/>
             </Button>
         </Grid>
         <Grid ColumnDefinitions="*,5,120">
