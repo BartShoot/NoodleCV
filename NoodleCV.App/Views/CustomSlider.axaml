@@ -20,7 +20,7 @@
         </Grid>
         <Grid ColumnDefinitions="*,5,120">
             <Slider x:Name="Slider" Value="{Binding ParameterViewModel.CustomSliderViewModel.SliderValue}"
-                    Maximum="{Binding ParameterViewModel.CustomSliderViewModel.SliderNewMax}" />
+                    Maximum="{Binding ParameterViewModel.CustomSliderViewModel.SliderCurrentMax}" />
             <NumericUpDown x:Name="UpDown" Grid.Column="2"
                            Value="{Binding ParameterViewModel.CustomSliderViewModel.SliderValue, Mode=TwoWay}"
                            Width="120" VerticalAlignment="Center" />

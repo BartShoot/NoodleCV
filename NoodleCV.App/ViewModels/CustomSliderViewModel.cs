@@ -5,27 +5,31 @@ namespace NoodleCV.App.ViewModels;
 
 public partial class CustomSliderViewModel : ObservableObject
 {
-    [ObservableProperty] private int _sliderNewMax;
+    private static decimal _sliderDefaultValue;
+    private static int _sliderDefaultMax;
+    [ObservableProperty] private int _sliderCurrentMax;
     [ObservableProperty] private decimal _sliderValue;
-    [ObservableProperty] private decimal _upDownValue;
 
-    public CustomSliderViewModel()
+    public CustomSliderViewModel(decimal sliderDefaultValue, int sliderDefaultMax)
     {
-        SliderNewMax = 100;
+        _sliderDefaultValue = sliderDefaultValue;
+        _sliderDefaultMax = sliderDefaultMax;
+        SliderValue = _sliderDefaultValue;
+        SliderCurrentMax = _sliderDefaultMax;
     }
 
     partial void OnSliderValueChanging(decimal value)
     {
-        if (value > SliderNewMax)
+        if (value > SliderCurrentMax)
         {
-            SliderNewMax = (int)(value * 1.5m);
+            SliderCurrentMax = (int)(value * 1.5m);
         }
     }
 
     [RelayCommand]
     public void ResetToDefaultCommand()
     {
-        SliderValue = 0;
-        SliderNewMax = 100;
+        SliderValue = _sliderDefaultValue;
+        SliderCurrentMax = _sliderDefaultMax;
     }
 }

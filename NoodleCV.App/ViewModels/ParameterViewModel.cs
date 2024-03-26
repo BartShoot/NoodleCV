@@ -4,5 +4,5 @@ namespace NoodleCV.App.ViewModels;
 
 public class ParameterViewModel : ObservableObject
 {
-    public CustomSliderViewModel CustomSliderViewModel { get; } = new();
+    public CustomSliderViewModel CustomSliderViewModel { get; } = new(5, 100);
 }
