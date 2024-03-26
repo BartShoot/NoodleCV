@@ -9,7 +9,9 @@
         x:Class="NoodleCV.App.Views.MainWindow"
         x:DataType="viewModels:EditorViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="NoodleCV.App">
+        Title="NoodleCV.App"
+        Background="#202020"
+        ExtendClientAreaToDecorationsHint="True">
 
     <Grid ColumnDefinitions="5*,2*" RowDefinitions="3*,1*">
         <ui:InfoBar Severity="Error" Message="sww" Title="Test" ZIndex="1" IsOpen="True" Margin="10" />

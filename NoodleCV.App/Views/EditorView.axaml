@@ -10,7 +10,7 @@
              x:DataType="viewModels:EditorViewModel"
              x:Class="NoodleCV.App.Views.EditorView">
     <Grid>
-        <StackPanel ZIndex="1">
+        <StackPanel ZIndex="1" VerticalAlignment="Bottom">
             <Button Content="Switch Theme" Command="{Binding ChangeThemeCommand}" />
             <Button ZIndex="1" Content="new" Click="Button_OnClick" />
         </StackPanel>
