@@ -12,6 +12,12 @@ public partial class CustomFilePickerViewModel : ObservableObject
 {
     [ObservableProperty] private string _filePath = "";
     [ObservableProperty] private bool _isEnabled = true;
+    [ObservableProperty] private string _title;
+
+    public CustomFilePickerViewModel(string title)
+    {
+        _title = title;
+    }
 
 
     [RelayCommand]

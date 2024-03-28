@@ -9,11 +9,13 @@ public partial class CustomSliderViewModel : ObservableObject
     private static int _sliderDefaultMax;
     [ObservableProperty] private int _sliderCurrentMax;
     [ObservableProperty] private decimal _sliderValue;
+    [ObservableProperty] private string _title;
 
-    public CustomSliderViewModel(decimal sliderDefaultValue, int sliderDefaultMax)
+    public CustomSliderViewModel(decimal sliderDefaultValue, int sliderDefaultMax, string title)
     {
         _sliderDefaultValue = sliderDefaultValue;
         _sliderDefaultMax = sliderDefaultMax;
+        _title = title;
         SliderValue = _sliderDefaultValue;
         SliderCurrentMax = _sliderDefaultMax;
     }

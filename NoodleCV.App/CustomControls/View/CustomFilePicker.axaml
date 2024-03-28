@@ -13,17 +13,17 @@
 
     <StackPanel Orientation="Vertical" DataContext="{Binding ParameterViewModel.CustomFilePickerViewModel}" Spacing="5">
         <Grid ColumnDefinitions="*,*">
-            <Label Content="Label2" />
+            <Label Content="{Binding Title}" FontSize="16" FontWeight="DemiBold"/>
             <Button Grid.Column="1" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent"
                     Command="{Binding ResetToDefaultCommand}">
                 <avalonia:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="Restart" />
             </Button>
         </Grid>
 
-        <Grid ColumnDefinitions="*,5,Auto">
-            <TextBox x:Name="TextBox" Text="{Binding FilePath}" IsEnabled="{Binding IsEnabled}" />
-            <Button x:Name="PickFileButton" Grid.Column="2"
-                    VerticalAlignment="Center" HorizontalAlignment="Right" Command="{Binding PickImagePathCommand}">
+        <Grid ColumnDefinitions="*,10,Auto">
+            <TextBox Text="{Binding FilePath}" IsEnabled="{Binding IsEnabled}" />
+            <Button Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"
+                    Command="{Binding PickImagePathCommand}">
                 <avalonia:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="ImageSearch" />
             </Button>
         </Grid>
