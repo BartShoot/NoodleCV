@@ -2,16 +2,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:NoodleCV.App.ViewModels"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-             xmlns:vm="using:NoodleCV.App.ViewModels"
              xmlns:viewModel="clr-namespace:NoodleCV.App.CustomControls.ViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="NoodleCV.App.Views.CustomSlider" x:DataType="vm:EditorViewModel">
+             x:Class="NoodleCV.App.CustomControls.View.CustomFilePicker" x:DataType="viewModels:EditorViewModel">
     <Design.DataContext>
-        <viewModel:CustomSliderViewModel />
+        <viewModel:CustomFilePickerViewModel />
     </Design.DataContext>
 
-    <StackPanel Orientation="Vertical" DataContext="{Binding ParameterViewModel.CustomSliderViewModel}">
+    <StackPanel Orientation="Vertical" DataContext="{Binding ParameterViewModel.CustomFilePickerViewModel}" Spacing="5">
         <Grid ColumnDefinitions="*,*">
             <Label Content="Label2" />
             <Button Grid.Column="1" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent"
@@ -20,11 +20,12 @@
             </Button>
         </Grid>
 
-        <Grid ColumnDefinitions="*,5,120">
-            <Slider x:Name="Slider" Value="{Binding SliderValue}"
-                    Maximum="{Binding SliderCurrentMax}" />
-            <NumericUpDown x:Name="UpDown" Grid.Column="2"
-                           Value="{Binding SliderValue, Mode=TwoWay}" Width="120" VerticalAlignment="Center" />
+        <Grid ColumnDefinitions="*,5,Auto">
+            <TextBox x:Name="TextBox" Text="{Binding FilePath}" IsEnabled="{Binding IsEnabled}" />
+            <Button x:Name="PickFileButton" Grid.Column="2"
+                    VerticalAlignment="Center" HorizontalAlignment="Right" Command="{Binding PickImagePathCommand}">
+                <avalonia:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="ImageSearch" />
+            </Button>
         </Grid>
     </StackPanel>
 </UserControl>

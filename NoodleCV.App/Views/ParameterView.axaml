@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:NoodleCV.App.Views"
              xmlns:viewModels="clr-namespace:NoodleCV.App.ViewModels"
+             xmlns:view="clr-namespace:NoodleCV.App.CustomControls.View"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="NoodleCV.App.Views.ParameterView" x:DataType="viewModels:ParameterViewModel">
 
@@ -16,8 +17,11 @@
                 <ComboBoxItem Content="test2" />
             </ComboBox>
         </StackPanel>
+
         <Separator />
         <views:CustomSlider />
+        <Separator />
+        <view:CustomFilePicker />
         <Separator />
 
         <StackPanel Orientation="Vertical">

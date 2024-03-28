@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace NoodleCV.App.ViewModels;
+namespace NoodleCV.App.CustomControls.ViewModel;
 
 public partial class CustomSliderViewModel : ObservableObject
 {
