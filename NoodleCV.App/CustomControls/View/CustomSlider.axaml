@@ -3,17 +3,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-             xmlns:vm="using:NoodleCV.App.ViewModels"
-             xmlns:viewModel="clr-namespace:NoodleCV.App.CustomControls.ViewModel"
+             xmlns:components="clr-namespace:NoodleCV.App.CustomControls.ViewModel"
+             xmlns:viewModel="clr-namespace:NoodleCV.App.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="NoodleCV.App.Views.CustomSlider" x:DataType="vm:EditorViewModel">
+             x:Class="NoodleCV.App.Views.CustomSlider" x:DataType="viewModel:EditorViewModel">
     <Design.DataContext>
-        <viewModel:CustomSliderViewModel />
+        <components:CustomSliderViewModel />
     </Design.DataContext>
 
     <StackPanel Orientation="Vertical" DataContext="{Binding ParameterViewModel.CustomSliderViewModel}">
         <Grid ColumnDefinitions="*,*">
-            <Label Content="{Binding Title}" FontSize="16" FontWeight="SemiBold"/>
+            <Label Content="{Binding Title}" FontSize="16" FontWeight="SemiBold" />
             <Button Grid.Column="1" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent"
                     Command="{Binding ResetToDefaultCommand}">
                 <avalonia:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="Restart" />

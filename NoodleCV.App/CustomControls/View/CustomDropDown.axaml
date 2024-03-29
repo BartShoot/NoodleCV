@@ -6,26 +6,28 @@
              xmlns:components="clr-namespace:NoodleCV.App.CustomControls.ViewModel"
              xmlns:viewModel="clr-namespace:NoodleCV.App.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="NoodleCV.App.CustomControls.View.CustomFilePicker" x:DataType="viewModel:EditorViewModel">
+             x:Class="NoodleCV.App.CustomControls.View.CustomDropDown"
+             x:DataType="viewModel:EditorViewModel">
+
     <Design.DataContext>
-        <components:CustomFilePickerViewModel />
+        <components:CustomDropDownViewModel />
     </Design.DataContext>
 
-    <StackPanel Orientation="Vertical" DataContext="{Binding ParameterViewModel.CustomFilePickerViewModel}" Spacing="5">
+    <StackPanel Orientation="Vertical" DataContext="{Binding ParameterViewModel.CustomDropDownViewModel}" Spacing="5">
         <Grid ColumnDefinitions="*,*">
-            <Label Content="{Binding Title}" FontSize="16" FontWeight="DemiBold" />
+            <Label Content="{Binding Title}" FontSize="16" FontWeight="SemiBold" />
             <Button Grid.Column="1" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent"
                     Command="{Binding ResetToDefaultCommand}">
                 <avalonia:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="Restart" />
             </Button>
         </Grid>
 
-        <Grid ColumnDefinitions="*,10,Auto">
-            <TextBox Text="{Binding FilePath}" IsEnabled="{Binding IsEnabled}" />
-            <Button Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"
-                    Command="{Binding PickImagePathCommand}">
-                <avalonia:MaterialIcon Height="20" Width="20" Margin="-5,-2" Kind="ImageSearch" />
-            </Button>
+        <Grid ColumnDefinitions="*">
+            <ComboBox HorizontalAlignment="Stretch" SelectedIndex="{Binding SelectedId}"
+                      ItemsSource="{Binding DropDownItems}">
+                <ComboBoxItem Content="test" />
+                <ComboBoxItem Content="test2" />
+            </ComboBox>
         </Grid>
     </StackPanel>
 </UserControl>

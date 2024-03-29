@@ -10,23 +10,12 @@
 
     <StackPanel Spacing="10" Margin="10">
         <Label Content="Selected Node Name" FontWeight="SemiBold" FontSize="24" />
-        <StackPanel Orientation="Vertical">
-            <Label Content="Label1" />
-            <ComboBox HorizontalAlignment="Stretch">
-                <ComboBoxItem Content="test" />
-                <ComboBoxItem Content="test2" />
-            </ComboBox>
-        </StackPanel>
 
+        <view:CustomDropDown />
         <Separator />
         <views:CustomSlider />
         <Separator />
         <view:CustomFilePicker />
         <Separator />
-
-        <StackPanel Orientation="Vertical">
-            <Label Content="Label3" />
-            <TextBox x:Name="test" />
-        </StackPanel>
     </StackPanel>
 </UserControl>
