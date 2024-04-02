@@ -13,16 +13,17 @@
         Background="#202020"
         ExtendClientAreaToDecorationsHint="True">
 
-    <Grid ColumnDefinitions="5*,2*" RowDefinitions="3*,1*">
+    <Grid ColumnDefinitions="5*,4,2*" RowDefinitions="3*,4,1*">
         <ui:InfoBar Severity="Error" Message="sww" Title="Test" ZIndex="1" IsOpen="True" Margin="10" />
 
         <views:EditorView Grid.Row="0" Grid.Column="0" x:Name="DefaultEditorView" />
 
-        <Grid Grid.Row="1" Grid.Column="0" ColumnDefinitions="*,*">
+        <GridSplitter Grid.Row="1" Grid.Column="0" ResizeDirection="Auto" Background="#202020" />
+        <Grid Grid.Row="2" Grid.Column="0" ColumnDefinitions="*,*">
             <views:ImagePreviewView />
             <views:ImagePreviewView Grid.Column="1" />
         </Grid>
-
-        <views:ParameterView Grid.Row="0" Grid.Column="1" />
+        <GridSplitter Grid.Row="0" Grid.Column="1" ResizeDirection="Auto" Background="#202020" />
+        <views:ParameterView Grid.Row="0" Grid.Column="2" />
     </Grid>
 </Window>
