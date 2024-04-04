@@ -6,10 +6,10 @@
              xmlns:viewModels="clr-namespace:NoodleCV.App.ViewModels"
              xmlns:view="clr-namespace:NoodleCV.App.CustomControls.View"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="NoodleCV.App.Views.ParameterView" x:DataType="viewModels:ParameterViewModel">
+             x:Class="NoodleCV.App.Views.ParameterView" x:DataType="viewModels:EditorViewModel">
 
     <StackPanel Spacing="10" Margin="10">
-        <Label Content="Selected Node Name" FontWeight="SemiBold" FontSize="24" />
+        <Label Content="{Binding SelectedNode.Title}" FontWeight="SemiBold" FontSize="24" />
 
         <view:CustomDropDown />
         <Separator />
