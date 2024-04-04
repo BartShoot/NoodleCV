@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Styling;
-using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using NodifyM.Avalonia.ViewModelBase;
 
@@ -9,7 +8,7 @@ namespace NoodleCV.App.ViewModels;
 
 public partial class EditorViewModel : NodifyEditorViewModelBase
 {
-    [ObservableProperty] private NodeViewModelBase _selectedNode;
+    private NodeViewModelBase _selectedNode;
 
     public EditorViewModel()
     {
@@ -67,12 +66,19 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         input1.IsConnected = true;
     }
 
-    public ParameterViewModel ParameterViewModel { get; } = new();
-
-    partial void OnSelectedNodeChanged(NodeViewModelBase value)
+    public NodeViewModelBase SelectedNode
     {
-        //throw new();
+        get => _selectedNode;
+        set
+        {
+            if (value is not null)
+            {
+                SetProperty(ref _selectedNode, value);
+            }
+        }
     }
+
+    public ParameterViewModel ParameterViewModel { get; } = new();
 
     public override void Connect(ConnectorViewModelBase source, ConnectorViewModelBase target)
     {
