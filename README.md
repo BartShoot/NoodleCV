@@ -43,8 +43,10 @@ If you wish to package it like in releases check out
 my [Buddy pipelines](https://github.com/BartShoot/NoodleCV/blob/main/.buddy/buddy.yml) where I use `dotnet publish` with
 trimming and single file portable output.
 
-Currently the release is tested on Linux and Windows, soon also MacOS on Apple silicon.
+Currently the release is tested on Linux x64 and Windows x64, soon also MacOS on arm64.
 If there is a target that you could confirm is working feel free to let me know by pull request or create an issue.
+
+In the future I will consider other options of packaging and installing that would be more user friendly.
 
 # 🧰 Stack
 
