@@ -16,7 +16,7 @@ Software should be good enough for demonstrating quick prototypes of image proce
 Ideally preview should update on user input for quick feedback.
 
 First priority is getting simple functions like blur to work.
-Types of data other than images are planned for future developement.
+Types of data other than images are planned for future development.
 
 # 🚀 Running the app
 
