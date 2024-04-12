@@ -8,11 +8,11 @@ namespace NoodleCV.App.ViewModels;
 
 public partial class EditorViewModel : NodifyEditorViewModelBase
 {
-    private NodeViewModelBase _selectedNode;
+    private NodeViewModelBase? _selectedNode;
 
     public EditorViewModel()
     {
-        SelectedNode = new NodeViewModelBase();
+        _selectedNode = new NodeViewModelBase();
         var input1 = new ConnectorViewModelBase
         {
             Title = "Image",
@@ -66,7 +66,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         input1.IsConnected = true;
     }
 
-    public NodeViewModelBase SelectedNode
+    public NodeViewModelBase? SelectedNode
     {
         get => _selectedNode;
         set
@@ -80,26 +80,11 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
 
     public ParameterViewModel ParameterViewModel { get; } = new();
 
-    public override void Connect(ConnectorViewModelBase source, ConnectorViewModelBase target)
-    {
-        base.Connect(source, target);
-    }
-
-    public override void DisconnectConnector(ConnectorViewModelBase connector)
-    {
-        base.DisconnectConnector(connector);
-    }
-
     [RelayCommand]
     private void ChangeTheme()
     {
-        if (Application.Current.ActualThemeVariant == ThemeVariant.Dark)
-        {
-            Application.Current.RequestedThemeVariant = ThemeVariant.Light;
-        }
-        else
-        {
-            Application.Current.RequestedThemeVariant = ThemeVariant.Dark;
-        }
+        Application.Current!.RequestedThemeVariant = Application.Current.ActualThemeVariant == ThemeVariant.Dark
+            ? ThemeVariant.Light
+            : ThemeVariant.Dark;
     }
 }

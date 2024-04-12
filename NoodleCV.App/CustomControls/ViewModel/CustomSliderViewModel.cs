@@ -5,8 +5,8 @@ namespace NoodleCV.App.CustomControls.ViewModel;
 
 public partial class CustomSliderViewModel : ObservableObject
 {
-    private static decimal _sliderDefaultValue;
-    private static int _sliderDefaultMax;
+    private readonly int _sliderDefaultMax;
+    private readonly decimal _sliderDefaultValue;
     [ObservableProperty] private int _sliderCurrentMax;
     [ObservableProperty] private decimal _sliderValue;
     [ObservableProperty] private string _title;

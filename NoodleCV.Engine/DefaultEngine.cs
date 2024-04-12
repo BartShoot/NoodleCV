@@ -4,7 +4,7 @@ namespace NoodleCV.Engine;
 
 public class DefaultEngine : IEngine
 {
-    private List<IOperation> _operations = new();
+    private readonly List<IOperation> _operations = new();
 
     public void AddNode(IOperation operation)
     {

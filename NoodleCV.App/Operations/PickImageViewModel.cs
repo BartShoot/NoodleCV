@@ -1,8 +1,9 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using NoodleCV.App.CustomControls.ViewModel;
 
 namespace NoodleCV.App.Operations;
 
-public class PickImageViewModel
+public partial class PickImageViewModel(string title) : ObservableObject
 {
-    public CustomFilePickerViewModel CustomFilePickerViewModel = new("Pick image path");
+    [ObservableProperty] private CustomFilePickerViewModel _customFilePickerViewModel = new(title);
 }

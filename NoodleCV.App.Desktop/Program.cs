@@ -4,7 +4,7 @@ using Sentry;
 
 namespace NoodleCV.App.Desktop;
 
-class Program
+static class Program
 {
     [STAThread]
     public static void Main(string[] args)

@@ -7,7 +7,7 @@ namespace NoodleCV.App.ViewModels;
 public class ParameterViewModel : ObservableObject
 {
     public BlurViewModel BlurViewModel { get; } = new();
-    public PickImageViewModel PickImageViewModel { get; } = new();
+    public PickImageViewModel PickImageViewModel { get; } = new("Pick image path");
     public CustomSliderViewModel CustomSliderViewModel { get; } = new(5, 100, "My Custom Slider");
 
     public CustomFilePickerViewModel CustomFilePickerViewModel { get; } = new("My Custom File Picker");
