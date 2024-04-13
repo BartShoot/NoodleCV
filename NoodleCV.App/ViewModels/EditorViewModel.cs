@@ -1,6 +1,8 @@
 using System.Collections.ObjectModel;
+using System.Linq;
 using Avalonia;
 using Avalonia.Styling;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using NodifyM.Avalonia.ViewModelBase;
 
@@ -8,11 +10,12 @@ namespace NoodleCV.App.ViewModels;
 
 public partial class EditorViewModel : NodifyEditorViewModelBase
 {
-    private NodeViewModelBase? _selectedNode;
+    [ObservableProperty] private Collection<NodeViewModel> _nodes;
+    private NodeViewModel? _selectedNode;
 
     public EditorViewModel()
     {
-        _selectedNode = new NodeViewModelBase();
+        _selectedNode = new NodeViewModel();
         var input1 = new ConnectorViewModelBase
         {
             Title = "Image",
@@ -24,9 +27,9 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
             Flow = ConnectorViewModelBase.ConnectorFlow.Output
         };
         Connections.Add(new ConnectionViewModelBase(this, output1, input1));
-        Nodes = new ObservableCollection<object?>
+        Nodes = new ObservableCollection<NodeViewModel>
         {
-            new NodeViewModelBase
+            new NodeViewModel
             {
                 Location = new Point(400, 500),
                 Title = "Crop",
@@ -44,7 +47,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
                 },
                 Footer = "1920x1080@8bpc"
             },
-            new NodeViewModelBase
+            new NodeViewModel
             {
                 Title = "Blur",
                 Location = new Point(-100, -100),
@@ -66,7 +69,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         input1.IsConnected = true;
     }
 
-    public NodeViewModelBase? SelectedNode
+    public NodeViewModel? SelectedNode
     {
         get => _selectedNode;
         set
@@ -86,5 +89,14 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         Application.Current!.RequestedThemeVariant = Application.Current.ActualThemeVariant == ThemeVariant.Dark
             ? ThemeVariant.Light
             : ThemeVariant.Dark;
+    }
+
+    [RelayCommand]
+    private void DeleteNodeCommand()
+    {
+        if (SelectedNode != null)
+        {
+            Nodes.Remove(Nodes.First(node => node.Id.Equals(SelectedNode.Id)));
+        }
     }
 }

@@ -15,6 +15,9 @@
             <Button ZIndex="1" Content="new" Click="Button_OnClick" />
         </StackPanel>
 
+        <Grid.KeyBindings>
+            <KeyBinding Gesture="Delete" Command="{Binding DeleteNodeCommandCommand}"/>
+        </Grid.KeyBindings>
         <controls:NodifyEditor x:Name="Editor"
                                Background="Transparent"
                                ItemsSource="{Binding Nodes}"
@@ -22,6 +25,7 @@
                                PendingConnection="{Binding PendingConnection}"
                                DisconnectConnectorCommand="{Binding DisconnectConnectorCommand}"
                                SelectedItem="{Binding SelectedNode}">
+            
             <controls:NodifyEditor.DataTemplates>
                 <DataTemplate DataType="viewModelBase:KnotNodeViewModel">
                     <controls:KnotNode
