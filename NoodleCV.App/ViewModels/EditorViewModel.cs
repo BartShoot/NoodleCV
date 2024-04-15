@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DynamicData;
 using NodifyM.Avalonia.ViewModelBase;
 
 namespace NoodleCV.App.ViewModels;
@@ -92,11 +94,82 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
     }
 
     [RelayCommand]
-    private void DeleteNodeCommand()
+    private void DeleteNode()
     {
         if (SelectedNode != null)
         {
-            Nodes.Remove(Nodes.First(node => node.Id.Equals(SelectedNode.Id)));
+            var toDelete = Nodes.First(node => node.Id.Equals(SelectedNode.Id));
+            IEnumerable<ConnectionViewModelBase>? inputConnections = GetInputConnections(toDelete);
+            IEnumerable<ConnectionViewModelBase>? outputConnections = GetOutputConnections(toDelete);
+
+            IEnumerable<ConnectionViewModelBase> connectionsToDelete =
+                (inputConnections ?? Enumerable.Empty<ConnectionViewModelBase>()).Concat(
+                    outputConnections ?? Enumerable.Empty<ConnectionViewModelBase>());
+
+            IEnumerable<ConnectorViewModelBase> sources = null;
+            IEnumerable<ConnectorViewModelBase> targets = null;
+            if (connectionsToDelete.Any())
+            {
+                sources = connectionsToDelete.Select(c => c.Source).Distinct();
+                targets = connectionsToDelete.Select(c => c.Target).Distinct();
+            }
+
+            Connections.RemoveMany(connectionsToDelete);
+            if (sources.Count() > 0)
+            {
+                UnsetIsConnected(sources);
+            }
+
+            if (targets.Count() > 0)
+            {
+                UnsetIfConnectedTarget(targets);
+            }
+
+            Nodes.Remove(toDelete);
         }
+    }
+
+    private void UnsetIfConnectedTarget(IEnumerable<ConnectorViewModelBase> targets)
+    {
+        foreach (var trg in targets)
+        {
+            if (Connections.Where(con => con.Target == trg).Any())
+            {
+                trg.IsConnected = false;
+            }
+        }
+    }
+
+    private void UnsetIsConnected(IEnumerable<ConnectorViewModelBase> sources)
+    {
+        foreach (var src in sources)
+        {
+            if (Connections.Where(con => con.Source == src).Any())
+            {
+                src.IsConnected = false;
+            }
+        }
+    }
+
+    private IEnumerable<ConnectionViewModelBase>? GetOutputConnections(NodeViewModel toDelete)
+    {
+        IEnumerable<ConnectionViewModelBase>? outputConnections = null;
+        foreach (var output in toDelete.Output)
+        {
+            outputConnections = Connections.Where(con => con.Source == output);
+        }
+
+        return outputConnections;
+    }
+
+    private IEnumerable<ConnectionViewModelBase>? GetInputConnections(NodeViewModel toDelete)
+    {
+        IEnumerable<ConnectionViewModelBase>? inputConnections = null;
+        foreach (var input in toDelete.Input)
+        {
+            inputConnections = Connections.Where(con => con.Target == input);
+        }
+
+        return inputConnections;
     }
 }

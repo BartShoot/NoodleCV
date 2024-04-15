@@ -15,9 +15,10 @@
             <Button ZIndex="1" Content="new" Click="Button_OnClick" />
         </StackPanel>
 
-        <Grid.KeyBindings>
-            <KeyBinding Gesture="Delete" Command="{Binding DeleteNodeCommandCommand}"/>
-        </Grid.KeyBindings>
+        <Menu>
+            <MenuItem Header="_Delete" Command="{Binding DeleteNodeCommand}" HotKey="Delete"/>
+        </Menu>
+        
         <controls:NodifyEditor x:Name="Editor"
                                Background="Transparent"
                                ItemsSource="{Binding Nodes}"
