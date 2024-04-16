@@ -114,16 +114,17 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
                 targets = connectionsToDelete.Select(c => c.Target).Distinct();
             }
 
-            Connections.RemoveMany(connectionsToDelete);
-            if (sources.Count() > 0)
+            if (sources != null && sources.Any())
             {
                 UnsetIsConnected(sources);
             }
 
-            if (targets.Count() > 0)
+            if (targets != null && targets.Any())
             {
                 UnsetIfConnectedTarget(targets);
             }
+
+            Connections.RemoveMany(connectionsToDelete);
 
             Nodes.Remove(toDelete);
         }
@@ -131,22 +132,22 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
 
     private void UnsetIfConnectedTarget(IEnumerable<ConnectorViewModelBase> targets)
     {
-        foreach (var trg in targets)
+        foreach (var target in targets)
         {
-            if (Connections.Where(con => con.Target == trg).Any())
+            if (Connections.All(con => con.Target != target))
             {
-                trg.IsConnected = false;
+                target.IsConnected = false;
             }
         }
     }
 
     private void UnsetIsConnected(IEnumerable<ConnectorViewModelBase> sources)
     {
-        foreach (var src in sources)
+        foreach (var source in sources)
         {
-            if (Connections.Where(con => con.Source == src).Any())
+            if (Connections.All(con => con.Source != source))
             {
-                src.IsConnected = false;
+                source.IsConnected = false;
             }
         }
     }
