@@ -4,7 +4,7 @@ using NodifyM.Avalonia.ViewModelBase;
 
 namespace NoodleCV.App.ViewModels;
 
-public partial class NodeViewModel : NodeViewModelBase
+public partial class ConnectorViewModel : ConnectorViewModelBase
 {
-    [ObservableProperty] private Guid _id;
+    [ObservableProperty] private Guid _id = Guid.NewGuid();
 }

@@ -33,7 +33,7 @@
                         Location="{Binding Location,Mode=TwoWay}"
                         Content="{Binding Connector}">
                         <controls:KnotNode.ContentTemplate>
-                            <DataTemplate DataType="viewModelBase:ConnectorViewModelBase">
+                            <DataTemplate DataType="viewModels:ConnectorViewModel">
                                 <controls:Connector
                                     VerticalAlignment="Center"
                                     IsConnected="{Binding IsConnected}"
@@ -113,7 +113,7 @@
                 </DataTemplate>
             </controls:NodifyEditor.PendingConnectionTemplate>
             <controls:NodifyEditor.ItemTemplate>
-                <DataTemplate DataType="viewModelBase:NodeViewModelBase">
+                <DataTemplate DataType="viewModels:NodeViewModel">
                     <controls:Node x:Name="Node"
                                    Input="{Binding Input}"
                                    Header="{Binding Title}"
@@ -134,7 +134,7 @@
                             <SolidColorBrush Color="Gray" />
                         </controls:Node.FooterBrush>
                         <controls:Node.InputConnectorTemplate>
-                            <DataTemplate DataType="{x:Type viewModelBase:ConnectorViewModelBase}">
+                            <DataTemplate DataType="{x:Type viewModels:ConnectorViewModel}">
                                 <controls:NodeInput
                                     x:Name="NodeInput"
                                     VerticalAlignment="Center"
@@ -158,7 +158,7 @@
                         </controls:Node.InputConnectorTemplate>
 
                         <controls:Node.OutputConnectorTemplate>
-                            <DataTemplate DataType="{x:Type viewModelBase:ConnectorViewModelBase}">
+                            <DataTemplate DataType="{x:Type viewModels:ConnectorViewModel}">
                                 <controls:NodeOutput
                                     x:Name="NodeOutput"
                                     VerticalAlignment="Center"

@@ -12,34 +12,38 @@ namespace NoodleCV.App.ViewModels;
 
 public partial class EditorViewModel : NodifyEditorViewModelBase
 {
+    [ObservableProperty] private Collection<ConnectionViewModel> _connections;
     [ObservableProperty] private Collection<NodeViewModel> _nodes;
     private NodeViewModel? _selectedNode;
 
     public EditorViewModel()
     {
         _selectedNode = new NodeViewModel();
-        var input1 = new ConnectorViewModelBase
+        var input1 = new ConnectorViewModel
         {
             Title = "Image",
             Flow = ConnectorViewModelBase.ConnectorFlow.Input
         };
-        var output1 = new ConnectorViewModelBase
+        var output1 = new ConnectorViewModel
         {
             Title = "Image",
             Flow = ConnectorViewModelBase.ConnectorFlow.Output
         };
-        Connections.Add(new ConnectionViewModelBase(this, output1, input1));
+        Connections = new ObservableCollection<ConnectionViewModel>
+        {
+            new ConnectionViewModel(this, output1, input1)
+        };
         Nodes = new ObservableCollection<NodeViewModel>
         {
             new NodeViewModel
             {
                 Location = new Point(400, 500),
                 Title = "Crop",
-                Input = new ObservableCollection<ConnectorViewModelBase>
+                Input = new ObservableCollection<ConnectorViewModel>
                 {
                     input1
                 },
-                Output = new ObservableCollection<ConnectorViewModelBase>
+                Output = new ObservableCollection<ConnectorViewModel>
                 {
                     new()
                     {
@@ -53,7 +57,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
             {
                 Title = "Blur",
                 Location = new Point(-100, -100),
-                Input = new ObservableCollection<ConnectorViewModelBase>
+                Input = new ObservableCollection<ConnectorViewModel>
                 {
                     new()
                     {
@@ -61,7 +65,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
                         Flow = ConnectorViewModelBase.ConnectorFlow.Input
                     }
                 },
-                Output = new ObservableCollection<ConnectorViewModelBase>
+                Output = new ObservableCollection<ConnectorViewModel>
                 {
                     output1,
                 }
@@ -99,15 +103,15 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         if (SelectedNode != null)
         {
             var toDelete = Nodes.First(node => node.Id.Equals(SelectedNode.Id));
-            IEnumerable<ConnectionViewModelBase>? inputConnections = GetInputConnections(toDelete);
-            IEnumerable<ConnectionViewModelBase>? outputConnections = GetOutputConnections(toDelete);
+            IEnumerable<ConnectionViewModel>? inputConnections = GetConnectionsFromConnectors(toDelete.Input);
+            IEnumerable<ConnectionViewModel>? outputConnections = GetConnectionsFromConnectors(toDelete.Output);
 
-            IEnumerable<ConnectionViewModelBase> connectionsToDelete =
-                (inputConnections ?? Enumerable.Empty<ConnectionViewModelBase>()).Concat(
-                    outputConnections ?? Enumerable.Empty<ConnectionViewModelBase>());
+            IEnumerable<ConnectionViewModel> connectionsToDelete =
+                (inputConnections ?? Enumerable.Empty<ConnectionViewModel>()).Concat(
+                    outputConnections ?? Enumerable.Empty<ConnectionViewModel>());
 
-            IEnumerable<ConnectorViewModelBase> sources = null;
-            IEnumerable<ConnectorViewModelBase> targets = null;
+            IEnumerable<ConnectorViewModel> sources = null;
+            IEnumerable<ConnectorViewModel> targets = null;
             if (connectionsToDelete.Any())
             {
                 sources = connectionsToDelete.Select(c => c.Source).Distinct();
@@ -130,7 +134,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         }
     }
 
-    private void UnsetIfConnectedTarget(IEnumerable<ConnectorViewModelBase> targets)
+    private void UnsetIfConnectedTarget(IEnumerable<ConnectorViewModel> targets)
     {
         foreach (var target in targets)
         {
@@ -141,7 +145,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         }
     }
 
-    private void UnsetIsConnected(IEnumerable<ConnectorViewModelBase> sources)
+    private void UnsetIsConnected(IEnumerable<ConnectorViewModel> sources)
     {
         foreach (var source in sources)
         {
@@ -152,25 +156,15 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         }
     }
 
-    private IEnumerable<ConnectionViewModelBase>? GetOutputConnections(NodeViewModel toDelete)
+    private IEnumerable<ConnectionViewModel>? GetConnectionsFromConnectors(
+        ObservableCollection<ConnectorViewModel> connectors)
     {
-        IEnumerable<ConnectionViewModelBase>? outputConnections = null;
-        foreach (var output in toDelete.Output)
+        IEnumerable<ConnectionViewModel>? connections = null;
+        foreach (var connector in connectors)
         {
-            outputConnections = Connections.Where(con => con.Source == output);
+            connections = Connections.Where(con => con.Source == connector);
         }
 
-        return outputConnections;
-    }
-
-    private IEnumerable<ConnectionViewModelBase>? GetInputConnections(NodeViewModel toDelete)
-    {
-        IEnumerable<ConnectionViewModelBase>? inputConnections = null;
-        foreach (var input in toDelete.Input)
-        {
-            inputConnections = Connections.Where(con => con.Target == input);
-        }
-
-        return inputConnections;
+        return connections;
     }
 }
