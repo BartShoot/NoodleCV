@@ -100,6 +100,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
     [RelayCommand]
     private void DeleteNode()
     {
+        // TODO: fix deleting nodes...
         if (SelectedNode != null)
         {
             var toDelete = Nodes.First(node => node.Id.Equals(SelectedNode.Id));
