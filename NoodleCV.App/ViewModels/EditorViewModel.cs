@@ -107,29 +107,32 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
             IEnumerable<ConnectionViewModel>? inputConnections = GetConnectionsFromConnectors(toDelete.Input);
             IEnumerable<ConnectionViewModel>? outputConnections = GetConnectionsFromConnectors(toDelete.Output);
 
+            var targets = Connections.Select(con => con.Target);
+
+            var sources = Connections.Select(con => con.Source);
+
             IEnumerable<ConnectionViewModel> connectionsToDelete =
                 (inputConnections ?? Enumerable.Empty<ConnectionViewModel>()).Concat(
                     outputConnections ?? Enumerable.Empty<ConnectionViewModel>());
 
-            IEnumerable<ConnectorViewModel> sources = null;
-            IEnumerable<ConnectorViewModel> targets = null;
-            if (connectionsToDelete.Any())
-            {
-                sources = connectionsToDelete.Select(c => c.Source).Distinct();
-                targets = connectionsToDelete.Select(c => c.Target).Distinct();
-            }
-
-            if (sources != null && sources.Any())
-            {
-                UnsetIsConnected(sources);
-            }
-
-            if (targets != null && targets.Any())
-            {
-                UnsetIfConnectedTarget(targets);
-            }
-
             Connections.RemoveMany(connectionsToDelete);
+
+
+            var targetsAfter = Connections.Select(con => con.Target);
+
+            var sourcesAfter = Connections.Select(con => con.Source);
+
+            var targetsDifference = targets.Except(targetsAfter);
+            var sourcesDifference = sources.Except(sourcesAfter);
+
+            foreach (var node in Nodes)
+            {
+                node.Input.Where(con =>
+                {
+                    //TODO: Finish this
+                    //targetsDifference.Contains(con)
+                });
+            }
 
             Nodes.Remove(toDelete);
         }
@@ -163,7 +166,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
         IEnumerable<ConnectionViewModel>? connections = null;
         foreach (var connector in connectors)
         {
-            connections = Connections.Where(con => con.Source == connector);
+            connections = Connections.Where(con => con.Source == connector || con.Target == connector);
         }
 
         return connections;

@@ -11,10 +11,14 @@ public partial class ConnectionViewModel : ConnectionViewModelBase
     public ConnectionViewModel(NodifyEditorViewModelBase nodifyEditor, ConnectorViewModel source,
         ConnectorViewModel target) : base(nodifyEditor, source, target)
     {
+        Source = source;
+        Target = target;
     }
 
     public ConnectionViewModel(NodifyEditorViewModelBase nodifyEditor, ConnectorViewModel source,
         ConnectorViewModel target, string text) : base(nodifyEditor, source, target, text)
     {
+        Source = source;
+        Target = target;
     }
 }
