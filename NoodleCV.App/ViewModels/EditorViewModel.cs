@@ -100,16 +100,15 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
     [RelayCommand]
     private void DeleteNode()
     {
-        // TODO: fix deleting nodes...
         if (SelectedNode != null)
         {
             var toDelete = Nodes.First(node => node.Id.Equals(SelectedNode.Id));
             IEnumerable<ConnectionViewModel>? inputConnections = GetConnectionsFromConnectors(toDelete.Input);
             IEnumerable<ConnectionViewModel>? outputConnections = GetConnectionsFromConnectors(toDelete.Output);
 
-            var targets = Connections.Select(con => con.Target);
+            var targets = Connections.Select(con => con.Target.Clone());
 
-            var sources = Connections.Select(con => con.Source);
+            var sources = Connections.Select(con => con.Source.Clone());
 
             IEnumerable<ConnectionViewModel> connectionsToDelete =
                 (inputConnections ?? Enumerable.Empty<ConnectionViewModel>()).Concat(
@@ -125,38 +124,7 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
             var targetsDifference = targets.Except(targetsAfter);
             var sourcesDifference = sources.Except(sourcesAfter);
 
-            foreach (var node in Nodes)
-            {
-                node.Input.Where(con =>
-                {
-                    //TODO: Finish this
-                    //targetsDifference.Contains(con)
-                });
-            }
-
             Nodes.Remove(toDelete);
-        }
-    }
-
-    private void UnsetIfConnectedTarget(IEnumerable<ConnectorViewModel> targets)
-    {
-        foreach (var target in targets)
-        {
-            if (Connections.All(con => con.Target != target))
-            {
-                target.IsConnected = false;
-            }
-        }
-    }
-
-    private void UnsetIsConnected(IEnumerable<ConnectorViewModel> sources)
-    {
-        foreach (var source in sources)
-        {
-            if (Connections.All(con => con.Source != source))
-            {
-                source.IsConnected = false;
-            }
         }
     }
 

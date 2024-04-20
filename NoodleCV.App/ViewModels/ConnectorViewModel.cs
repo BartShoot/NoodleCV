@@ -7,4 +7,9 @@ namespace NoodleCV.App.ViewModels;
 public partial class ConnectorViewModel : ConnectorViewModelBase
 {
     [ObservableProperty] private Guid _id = Guid.NewGuid();
+
+    public ConnectorViewModel Clone()
+    {
+        return (ConnectorViewModel)MemberwiseClone();
+    }
 }
