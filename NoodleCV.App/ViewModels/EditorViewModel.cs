@@ -114,6 +114,8 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
                 (inputConnections ?? Enumerable.Empty<ConnectionViewModel>()).Concat(
                     outputConnections ?? Enumerable.Empty<ConnectionViewModel>());
 
+            // it removes previous references....
+
             Connections.RemoveMany(connectionsToDelete);
 
 
