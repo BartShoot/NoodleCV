@@ -1,3 +1,4 @@
+using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using NodifyM.Avalonia.ViewModelBase;
 
@@ -20,5 +21,15 @@ public partial class ConnectionViewModel : ConnectionViewModelBase
     {
         Source = source;
         Target = target;
+    }
+
+    public Guid GetSourceId()
+    {
+        return Source.Id;
+    }
+
+    public Guid GetTargetId()
+    {
+        return Target.Id;
     }
 }

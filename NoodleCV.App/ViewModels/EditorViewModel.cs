@@ -106,9 +106,9 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
             IEnumerable<ConnectionViewModel>? inputConnections = GetConnectionsFromConnectors(toDelete.Input);
             IEnumerable<ConnectionViewModel>? outputConnections = GetConnectionsFromConnectors(toDelete.Output);
 
-            var targets = Connections.Select(con => con.Target.Clone());
+            var targets = Connections.Select(con => con.GetTargetId());
 
-            var sources = Connections.Select(con => con.Source.Clone());
+            var sources = Connections.Select(con => con.GetSourceId());
 
             IEnumerable<ConnectionViewModel> connectionsToDelete =
                 (inputConnections ?? Enumerable.Empty<ConnectionViewModel>()).Concat(
@@ -119,9 +119,9 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
             Connections.RemoveMany(connectionsToDelete);
 
 
-            var targetsAfter = Connections.Select(con => con.Target);
+            var targetsAfter = Connections.Select(con => con.Target.Id);
 
-            var sourcesAfter = Connections.Select(con => con.Source);
+            var sourcesAfter = Connections.Select(con => con.Source.Id);
 
             var targetsDifference = targets.Except(targetsAfter);
             var sourcesDifference = sources.Except(sourcesAfter);
