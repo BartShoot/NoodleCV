@@ -117,14 +117,19 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
             Connections.RemoveMany(connectionsToDelete);
 
 
-            var targetsAfter = Connections.Select(con => con.Target.Id);
+            var targetsAfter = Connections.Select(con => con.GetTargetId()).ToList();
 
-            var sourcesAfter = Connections.Select(con => con.Source.Id);
+            var sourcesAfter = Connections.Select(con => con.GetSourceId()).ToList();
+
+            Nodes.Remove(toDelete);
 
             var targetsDifference = targets.Except(targetsAfter);
             var sourcesDifference = sources.Except(sourcesAfter);
 
-            Nodes.Remove(toDelete);
+            foreach (var id in targetsDifference.Concat(sourcesDifference))
+            {
+                // TODO setting isSelected to false
+            }
         }
     }
 
