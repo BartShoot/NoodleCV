@@ -128,7 +128,10 @@ public partial class EditorViewModel : NodifyEditorViewModelBase
 
             foreach (var id in targetsDifference.Concat(sourcesDifference))
             {
-                // TODO setting isSelected to false
+                foreach (var node in Nodes)
+                {
+                    node.UnsetIsConnected(id);
+                }
             }
         }
     }
