@@ -15,6 +15,9 @@
             <Button ZIndex="1" Content="new" Click="Button_OnClick" />
         </StackPanel>
 
+        <ContextMenu ZIndex="1">
+            <MenuItem Header="_Delete" Command="{Binding DeleteNodeCommand}" HotKey="Delete"/>
+        </ContextMenu>
         <Menu>
             <MenuItem Header="_Delete" Command="{Binding DeleteNodeCommand}" HotKey="Delete"/>
         </Menu>
