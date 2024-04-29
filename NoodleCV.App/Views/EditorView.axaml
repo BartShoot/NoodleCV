@@ -14,14 +14,10 @@
             <Button Content="Switch Theme" Command="{Binding ChangeThemeCommand}" />
             <Button ZIndex="1" Content="new" Click="Button_OnClick" />
         </StackPanel>
-
-        <ContextMenu ZIndex="1">
-            <MenuItem Header="_Delete" Command="{Binding DeleteNodeCommand}" HotKey="Delete"/>
-        </ContextMenu>
         <Menu>
-            <MenuItem Header="_Delete" Command="{Binding DeleteNodeCommand}" HotKey="Delete"/>
+            <MenuItem Header="_Delete" Command="{Binding DeleteNodeCommand}" HotKey="Delete" />
         </Menu>
-        
+
         <controls:NodifyEditor x:Name="Editor"
                                Background="Transparent"
                                ItemsSource="{Binding Nodes}"
@@ -29,6 +25,12 @@
                                PendingConnection="{Binding PendingConnection}"
                                DisconnectConnectorCommand="{Binding DisconnectConnectorCommand}"
                                SelectedItem="{Binding SelectedNode}">
+
+            <controls:NodifyEditor.ContextFlyout>
+                <MenuFlyout>
+                    <MenuItem Header="_Add node" />
+                </MenuFlyout>
+            </controls:NodifyEditor.ContextFlyout>
             
             <controls:NodifyEditor.DataTemplates>
                 <DataTemplate DataType="viewModelBase:KnotNodeViewModel">
@@ -129,8 +131,8 @@
                                 <Setter Property="BorderBrush" Value="AliceBlue" />
                             </Style>
                             <Style Selector="controls|Node.Footer">
-                                <Setter Property="FontWeight" Value="Thin"/>
-                                <Setter Property="FontSize" Value="6"/>
+                                <Setter Property="FontWeight" Value="Thin" />
+                                <Setter Property="FontSize" Value="6" />
                             </Style>
                         </controls:Node.Styles>
                         <controls:Node.FooterBrush>
