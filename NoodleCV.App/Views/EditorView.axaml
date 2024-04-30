@@ -28,7 +28,9 @@
 
             <controls:NodifyEditor.ContextFlyout>
                 <MenuFlyout>
-                    <MenuItem Header="_Add node" />
+                    <MenuItem Header="_Add node">
+                        <MenuItem Header="Test"/>
+                    </MenuItem>
                 </MenuFlyout>
             </controls:NodifyEditor.ContextFlyout>
             
