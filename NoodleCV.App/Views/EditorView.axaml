@@ -29,7 +29,11 @@
             <controls:NodifyEditor.ContextFlyout>
                 <MenuFlyout>
                     <MenuItem Header="_Add node">
-                        <MenuItem Header="Test"/>
+                        <MenuItem Header="_Blur"/>
+                        <MenuItem Header="_Crop"/>
+                        <MenuItem Header="_Load image"/>
+                        <MenuItem Header="_Save image"/>
+                        <MenuItem Header="_Resize"/>
                     </MenuItem>
                 </MenuFlyout>
             </controls:NodifyEditor.ContextFlyout>
