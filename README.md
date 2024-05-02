@@ -51,4 +51,4 @@ In the future I will consider other options of packaging and installing that wou
 # 🧰 Stack
 
 Application is developed in C# with AvaloniaUI targeting desktop platforms (Windows, Linux and MacOS). The UI is using FluentAvalonia to match modern operating systems.
-The image processing library for this project is OpenCV. The code is kept in line with MVVM architecture.
+The image processing library for this project is OpenCV. The code is kept in line with MVVM architecture. Long weekend commit
