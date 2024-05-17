@@ -6,6 +6,8 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BartShoot/NoodleCV?style=flat-square)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/BartShoot/NoodleCV/total?style=flat-square)
 
+This application is an unfinished port of my [Bachelor's thesis project](https://github.com/BartShoot/projekt-praca-inz) 
+
 Multiplatform desktop application for image processing.
 Project is inspired by Blender, Unreal Engine, Substance Designer and other node-based editors.
 
